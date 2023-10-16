@@ -17,7 +17,7 @@ public class BookingController {
 
   private final BookingServiceImp bookingServiceImp;
 
-  @GetMapping("/{id}")
+  @GetMapping("{id}")
   public ResponseEntity <BookingResponse> findById(@PathVariable Long id) {
     return new ResponseEntity<>(bookingServiceImp.findById(id), HttpStatus.OK);
   }
@@ -31,7 +31,7 @@ public class BookingController {
                                                @RequestBody BookingRequest bookingRequest){
     return  new ResponseEntity<>(bookingServiceImp.save(userId,paymentId,bookingRequest),HttpStatus.CREATED);
   }
-  @GetMapping("/{id}")
+  @DeleteMapping("{id}")
   public void delete(@PathVariable Long id){
     bookingServiceImp.delete(id);
   }
